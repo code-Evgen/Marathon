@@ -5,17 +5,12 @@ import day11.task2.Interfaces.MagicAttack;
 import day11.task2.Interfaces.Healer;
 
 public class Shaman extends Hero implements PhysAttack, MagicAttack, Healer {
-    private double health;
     private int magicDef;
     private int physDef;
     private int magicAtt;
     private int physAtt;
     private int healHimself;
     private int healTeammate;
-
-    public double getHealth() {
-        return health;
-    }
 
     public int getMagicDef() {
         return magicDef;
@@ -25,27 +20,17 @@ public class Shaman extends Hero implements PhysAttack, MagicAttack, Healer {
         return physDef;
     }
 
-    public void setHealth(double health) {
-        this.health = health;
+    public int getPhysAtt() {
+        return physAtt;
     }
 
     public Shaman() {
-        health = 100;
         magicDef = 20;
         physDef = 20;
         magicAtt = 15;
         physAtt = 10;
         healHimself = 50;
         healTeammate = 30;
-    }
-
-    @Override
-    public void physicalAttack(Hero hero) {
-        double currentHealth = hero.getHealth() - (100 - hero.getPhysDef()) * 0.01 * physAtt;
-        if (currentHealth > 0)
-            hero.setHealth(currentHealth);
-        else
-            hero.setHealth(0);
     }
 
     @Override
@@ -59,9 +44,9 @@ public class Shaman extends Hero implements PhysAttack, MagicAttack, Healer {
 
     @Override
     public void healHimself() {
-        health += healHimself;
-        if (health > 100)
-            health = 100;
+        super.setHealth(super.getHealth() + healHimself);
+        if (super.getHealth() > 100)
+            super.setHealth(100);
     }
 
     @Override

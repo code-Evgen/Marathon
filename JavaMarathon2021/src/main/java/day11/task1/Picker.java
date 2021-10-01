@@ -26,8 +26,8 @@ public class Picker implements Worker{
     public void doWork(){
         salary += 80;
         warehouse.setCountPickedOrders(warehouse.getCountPickedOrders() + 1);
-        if (warehouse.getCountPickedOrders() == 10000)
-            bonus();
+//        if (warehouse.getCountPickedOrders() == 10000)
+//            bonus();
 //        else{
 //            if (pickedSum % 10000 == 1)
 //                isPayed = false;
