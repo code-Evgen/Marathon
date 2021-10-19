@@ -23,15 +23,40 @@ public class Task1 {
                     map.put(word, 1);
             }
 
-            List<Word> list = new ArrayList<>();
+//            List<Word> list = new ArrayList<>();
+//            for (Map.Entry<String, Integer> entry: map.entrySet()){
+//                list.add(new Word(entry.getValue(), entry.getKey()));
+//            }
+//
+//            Collections.sort(list);
+//
+//            for (int i = 0; i < 100; i++){
+//                System.out.println(list.get(i).getWord() + " - " + list.get(i).getCount());
+//            }
+
+            List<String> list = new ArrayList<>();
+
             for (Map.Entry<String, Integer> entry: map.entrySet()){
-                list.add(new Word(entry.getValue(), entry.getKey()));
+                list.add(entry.getKey() + " " + entry.getValue());
             }
 
-            Collections.sort(list);
+            list.sort(new Comparator<String>() {
+                @Override
+                public int compare(String o1, String o2) {
+                    String[] str1 = o1.split(" ");
+                    String[] str2 = o2.split(" ");
+                    if (Integer.parseInt(str1[1]) < Integer.parseInt(str2[1]))
+                        return 1;
+                    else
+                        if (Integer.parseInt(str1[1]) > Integer.parseInt(str2[1]))
+                            return -1;
+                        else
+                            return 0;
+                }
+            });
 
             for (int i = 0; i < 100; i++){
-                System.out.println(list.get(i).getWord() + " - " + list.get(i).getCount());
+                System.out.println(list.get(i));
             }
 
             System.out.println("---------------");

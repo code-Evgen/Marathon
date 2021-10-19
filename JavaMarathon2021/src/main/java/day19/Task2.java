@@ -19,8 +19,8 @@ public class Task2 {
                 hashSet.add(sc.nextInt());
             }
             int count = 0;
-            for (Integer entry: hashSet){
-                if ((entry > 500000000) & (entry < 600000000)){
+            for (int i = 500000000; i <= 600000000; i++){
+                if (hashSet.contains(i)){
                     count++;
                 }
             }
